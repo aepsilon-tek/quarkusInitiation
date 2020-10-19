@@ -8,10 +8,13 @@ import javax.ws.rs.Path;
 
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import org.jboss.logging.Logger;
 
 
 @Path("/bonjour")
 public class SalutationResource {
+
+    private static final Logger LOG = Logger.getLogger(SalutationResource.class);
 
     @Inject
     SalutationService service;
@@ -28,6 +31,21 @@ public class SalutationResource {
     @Path("/salutation/{name}")
     public String salutation(@PathParam String name) {
         return service.salutation(name);
+    }
+
+
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("/failure")
+    public String testException() throws Exception{
+        try {
+            LOG.debugf("Test de log avec les substitutions 'printf-style' , log en mode %s ", "DEBUG");
+            LOG.infov("Test de log avec les substitutions 'MessageFormat-style' , log en mode {0} ", "INFO");
+            throw new Exception("");
+        }catch(Exception e){
+            LOG.error("Error catchée",e);
+            throw e;
+        }
     }
 
 }
