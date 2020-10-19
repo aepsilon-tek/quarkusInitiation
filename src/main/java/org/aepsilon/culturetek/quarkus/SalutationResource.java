@@ -19,7 +19,7 @@ public class SalutationResource {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String hello() {
-        return "Bonjour le monde Maj";
+        return "Quarkus, Bonjour le monde Maj";
     }
 
 

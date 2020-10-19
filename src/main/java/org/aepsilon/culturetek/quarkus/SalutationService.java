@@ -6,6 +6,6 @@ import javax.enterprise.context.ApplicationScoped;
 public class SalutationService {
 
     public String salutation(String name) {
-        return "Bonjour " + name;
+        return "Quarkus, Bonjour " + name;
     }
 }

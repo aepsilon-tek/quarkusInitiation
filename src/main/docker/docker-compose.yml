@@ -1,0 +1,19 @@
+version: "3.6"
+services:
+  web:
+    image: registry.hub.docker.com/aedock/quarkus-initiation:1.0.0
+      - traefik
+    deploy:
+      labels:
+        - "traefik.port=8080"
+        - "traefik.frontend.rule=Host:quarkus-poc.com"
+        - "traefik.docker.network=traefik_default"
+        - "traefik.frontend.entryPoints=http,https"
+        - "traefik.frontend.redirect.permanent=true"
+        - "traefik.frontend.redirect.regex=^(https?://www.|http://)(.*)$$"
+        - "traefik.frontend.redirect.replacement=https://$${2}"
+
+networks:
+  traefik:
+    external: true
+    name: traefik_default
