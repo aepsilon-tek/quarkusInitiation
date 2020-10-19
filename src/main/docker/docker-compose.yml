@@ -2,6 +2,7 @@ version: "3.6"
 services:
   web:
     image: registry.hub.docker.com/aedock/quarkus-initiation:1.0.0
+    networks:
       - traefik
     deploy:
       labels:
