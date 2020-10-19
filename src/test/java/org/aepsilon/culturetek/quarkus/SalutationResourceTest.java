@@ -17,7 +17,7 @@ public class SalutationResourceTest {
           .when().get("/bonjour")
           .then()
              .statusCode(200)
-             .body(is("Bonjour le monde Maj"));
+             .body(is("Quarkus, Bonjour le monde Maj"));
     }
 
     @Test
@@ -28,7 +28,7 @@ public class SalutationResourceTest {
                 .when().get("/bonjour/salutation/{name}")
                 .then()
                 .statusCode(200)
-                .body(is("Bonjour " + uuid));
+                .body(is("Quarkus, Bonjour " + uuid));
     }
 
 
