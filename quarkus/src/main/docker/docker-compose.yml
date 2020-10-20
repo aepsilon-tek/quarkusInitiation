@@ -7,7 +7,7 @@ services:
     deploy:
       labels:
         - "traefik.port=8080"
-        - "traefik.frontend.rule=Host:quarkus-poc.com"
+        - "traefik.frontend.rule=Host:quarkus-poc.lab.aepsilon.com"
         - "traefik.docker.network=traefik_default"
         - "traefik.frontend.entryPoints=http,https"
         - "traefik.frontend.redirect.permanent=true"

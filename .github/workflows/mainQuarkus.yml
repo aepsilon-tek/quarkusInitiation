@@ -1,8 +1,11 @@
-on: [push]
+on:
+  push:
+    paths:
+      - 'quarkus/**'
 
 jobs:
   build-jvm:
-    name: Build JVM
+    name: Build Quarkus Native
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
