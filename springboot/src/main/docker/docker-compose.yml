@@ -1,13 +1,13 @@
 version: "3.6"
 services:
   web:
-    image: registry.hub.docker.com/aedock/quarkus-sample:1.0.0
+    image: registry.hub.docker.com/aedock/spring-boot-sample:1.0.0
     networks:
       - traefik
     deploy:
       labels:
         - "traefik.port=8080"
-        - "traefik.frontend.rule=Host:quarkus-poc.lab.aepsilon.com"
+        - "traefik.frontend.rule=Host:springboot-poc.lab.aepsilon.com"
         - "traefik.docker.network=traefik_default"
         - "traefik.frontend.entryPoints=http,https"
         - "traefik.frontend.redirect.permanent=true"
