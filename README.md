@@ -17,7 +17,7 @@ L'application peut être packagée comme ceci : `./mvnw package`.
 Cela gnénère un fichier `initiation-qwarkus-1.0-SNAPSHOT-runner.jar`dans le répertoire `/target`.
 Ce n'est pas un _über-jar_ puisque les dépendances sont copiées dans le répertoire `target/lib`.
 
-L'plication est désormais executable comme ceci `java -jar target/initiation-qwarkus-1.0-SNAPSHOT-runner.jar`.
+L'application est désormais executable comme ceci `java -jar target/initiation-qwarkus-1.0-SNAPSHOT-runner.jar`.
 
 ## Création d'un executable natif
 
@@ -28,3 +28,8 @@ Ou si vous n'avez pas GraalVM installé, vous pouvez exécuter  le build de l'ex
 Vous pouvez désormais executé l'application: `./target/initiation-qwarkus-1.0-SNAPSHOT-runner`
 
 Pour plus d'info sur le build d'executable natif :  https://quarkus.io/guides/building-native-image.
+
+# Tags
+## V1.0
+* Version du projet intégrant les implementations quarkus/springboot équivalentes fonctionnellement. L'application est une api rest constituée d'une resource/controller et d'un service. Bref un HelloWorld !
+* Le cicd associé lance le build d'image docker avec jib
