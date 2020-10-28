@@ -29,6 +29,11 @@ Vous pouvez désormais executé l'application: `./target/initiation-qwarkus-1.0-
 
 Pour plus d'info sur le build d'executable natif :  https://quarkus.io/guides/building-native-image.
 
+# Roadmap
+* V2.0 Ajout graphQl (dans quarkus & springboot)
+* V3.0 Ajout d'un accès bd (panache pour quarkus / springData pour springBoot)
+* V4.0 GraphQl avec interrogation BD optimisé (selon requête du front)
+
 # Tags
 ## V1.0
 * Version du projet intégrant les implementations quarkus/springboot équivalentes fonctionnellement. L'application est une api rest constituée d'une resource/controller et d'un service. Bref un HelloWorld !
