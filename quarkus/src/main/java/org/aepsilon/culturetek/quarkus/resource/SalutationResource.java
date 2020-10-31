@@ -1,5 +1,6 @@
-package org.aepsilon.culturetek.quarkus;
+package org.aepsilon.culturetek.quarkus.resource;
 
+import org.aepsilon.culturetek.quarkus.service.SalutationService;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import javax.inject.Inject;

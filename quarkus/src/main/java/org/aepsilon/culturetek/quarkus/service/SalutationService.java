@@ -1,4 +1,4 @@
-package org.aepsilon.culturetek.quarkus;
+package org.aepsilon.culturetek.quarkus.service;
 
 import javax.enterprise.context.ApplicationScoped;
 
