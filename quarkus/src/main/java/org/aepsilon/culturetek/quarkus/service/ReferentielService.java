@@ -131,4 +131,12 @@ public class ReferentielService {
                 .filter(pdv ->pdv.getBieres().contains(b))
                 .collect(Collectors.toList());
     }
+
+    public void addBrasseur(Brasseur brasseur){
+        brasseurs.add(brasseur);
+    }
+
+    public Brasseur deleteBrasseur(int index){
+       return  brasseurs.remove(index);
+    }
 }

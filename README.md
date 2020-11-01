@@ -33,6 +33,7 @@ Pour plus d'info sur le build d'executable natif :  https://quarkus.io/guides/bu
 * V2.0 Ajout graphQl (dans quarkus & springboot)
 * V3.0 Ajout d'un accès bd (panache pour quarkus / springData pour springBoot)
 * V4.0 GraphQl avec interrogation BD optimisé (selon requête du front)
+* V5.0 Sécuration des Query GraphQL
 
 # Tags
 ## V1.0
