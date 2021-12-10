@@ -33,9 +33,30 @@ Pour plus d'info sur le build d'executable natif :  https://quarkus.io/guides/bu
 * V2.0 Ajout graphQl (dans quarkus & springboot)
 * V3.0 Ajout d'un accès bd (panache pour quarkus / springData pour springBoot)
 * V4.0 GraphQl avec interrogation BD optimisé (selon requête du front)
-* V5.0 Sécuration des Query GraphQL
+* V5.0 Sécuration des Query GraphQL ( cf https://quarkus.io/guides/security-authorization)
 
 # Tags
 ## V1.0
 * Version du projet intégrant les implementations quarkus/springboot équivalentes fonctionnellement. L'application est une api rest constituée d'une resource/controller et d'un service. Bref un HelloWorld !
 * Le cicd associé lance le build d'image docker avec jib
+
+## V2.0
+* Projet Quarkus : 
+   * Upgrade de Quarkus, passage à la version 2.5.1.Final
+   * Ajout de GraphQl, implementation Smallrye
+       * https://graphql.org/learn/queries/
+       * https://www.redhat.com/fr/topics/api/what-is-graphql
+       * https://quarkus.io/guides/smallrye-graphql
+       * https://quarkus.io/blog/experimental_graphql/
+       * https://piotrminkowski.com/2021/04/14/advanced-graphql-with-quarkus/
+   * Ajout de D'une persistence H2 avec Panache
+* Projet Spring :  
+
+# Version Spring Boot
+* Url de la gui graphQL : http://localhost:8080/gui
+* 
+
+
+# Version Quarkus
+* URL du schema GraphQl : http://localhost:8080/graphql/schema.graphql
+* URL de UI GraphQl : http://localhost:8080/q/graphql-ui/
