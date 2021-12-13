@@ -2,15 +2,38 @@ package org.aepsilon.culturetek.springboot.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Biere {
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Long id;
+
+    
     private String nom;
     private String description;
     private Double degre;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
     private Brasseur brasseur;
     private StyleBiereEnum style;
 
     private LocalDate dateMaj;
 
+
+    public Long getId(){
+        return id;
+    }    
+
+    public void setId(Long id){
+        this.id =id;
+    }
 
     public String getNom() {
         return nom;

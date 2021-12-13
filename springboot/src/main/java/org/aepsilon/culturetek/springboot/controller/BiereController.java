@@ -1,19 +1,21 @@
 package org.aepsilon.culturetek.springboot.controller;
 
 
+import java.util.Optional;
+
 import org.aepsilon.culturetek.springboot.model.Biere;
 import org.aepsilon.culturetek.springboot.service.ReferentielService;
-import org.eclipse.microprofile.graphql.Description;
-import org.eclipse.microprofile.graphql.GraphQLApi;
-import org.eclipse.microprofile.graphql.Name;
-import org.eclipse.microprofile.graphql.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import java.util.List;
+import io.leangen.graphql.annotations.GraphQLArgument;
+import io.leangen.graphql.annotations.GraphQLQuery;
+import io.leangen.graphql.spqr.spring.annotations.GraphQLApi;
 
 @GraphQLApi
+@Component //mark the beans as Spring's managed components
 public class BiereController {
 
     private static final Logger LOG = LoggerFactory.getLogger(BiereController.class);
@@ -21,16 +23,16 @@ public class BiereController {
     @Autowired
     private ReferentielService service;
 
-    @Query("allBiere")
-    @Description("Renvoies toutes les bières du référentiel")
-    public List<Biere> getAllBiere() {
+    @GraphQLQuery(name="allBiere")
+    //@Description("Renvoies toutes les bières du référentiel")
+    public Iterable<Biere> getAllBiere() {
         return service.getAllBiere();
     }
 
 
-    @Query
-    @Description("Renvoie une biere")
-    public Biere getBiere(@Name("indexBiere") int id) {
+    @GraphQLQuery
+    //@Description("Renvoie une biere")
+    public Optional<Biere> getBiere(@GraphQLArgument(name="indexBiere") int id) {
         LOG.info("getBiere({0})",id);
         return service.getBiere(id);
     }

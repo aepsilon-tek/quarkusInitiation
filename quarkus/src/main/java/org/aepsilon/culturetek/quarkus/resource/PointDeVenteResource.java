@@ -1,13 +1,17 @@
 package org.aepsilon.culturetek.quarkus.resource;
 
+import java.util.List;
+
+import javax.inject.Inject;
+
 import org.aepsilon.culturetek.quarkus.model.Biere;
 import org.aepsilon.culturetek.quarkus.model.PointDeVente;
 import org.aepsilon.culturetek.quarkus.service.ReferentielService;
-import org.eclipse.microprofile.graphql.*;
+import org.eclipse.microprofile.graphql.Description;
+import org.eclipse.microprofile.graphql.GraphQLApi;
+import org.eclipse.microprofile.graphql.Query;
+import org.eclipse.microprofile.graphql.Source;
 import org.jboss.logging.Logger;
-
-import javax.inject.Inject;
-import java.util.List;
 
 @GraphQLApi
 public class PointDeVenteResource {

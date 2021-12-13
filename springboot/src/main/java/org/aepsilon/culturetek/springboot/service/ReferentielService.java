@@ -1,20 +1,39 @@
 package org.aepsilon.culturetek.springboot.service;
 
-import javax.enterprise.context.ApplicationScoped;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
+
+import javax.transaction.Transactional;
+import javax.transaction.Transactional.TxType;
+
+import org.aepsilon.culturetek.springboot.model.Biere;
+import org.aepsilon.culturetek.springboot.model.Brasseur;
+import org.aepsilon.culturetek.springboot.model.PaysEnum;
+import org.aepsilon.culturetek.springboot.model.PointDeVente;
+import org.aepsilon.culturetek.springboot.model.StyleBiereEnum;
+import org.aepsilon.culturetek.springboot.repository.BiereRepository;
+import org.aepsilon.culturetek.springboot.repository.BrasseurRepository;
+import org.aepsilon.culturetek.springboot.repository.PointDeVenteRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 
-@ApplicationScoped
+@Service
 public class ReferentielService {
+    @Autowired
+    private BrasseurRepository brasseurRepo=null;
 
-    private List<Brasseur> brasseurs  =new ArrayList<>();
-    private List<Biere> bieres = new ArrayList<>();
-    private List<PointDeVente> pdvs = new ArrayList<>();
+    @Autowired
+    private BiereRepository biereRepo=null;
+
+
+    @Autowired
+    private PointDeVenteRepository pdvRepo=null;
 
     public ReferentielService(){
+    }
+
+    public void initData(){
         LocalDate now=  LocalDate.now();
 
 
@@ -22,22 +41,22 @@ public class ReferentielService {
         Brasseur brasseur1 = new Brasseur();
         brasseur1.setNom("Brew Dog");
         brasseur1.setPays(PaysEnum.ECOSSE);
-        brasseurs.add(brasseur1);
+        brasseurRepo.save(brasseur1);
 
         Brasseur brasseur2 = new Brasseur();
         brasseur2.setNom("Molson Coors");
         brasseur2.setPays(PaysEnum.CANADA);
-        brasseurs.add(brasseur2);
+        brasseurRepo.save(brasseur2);
 
         Brasseur brasseur3 = new Brasseur();
         brasseur3.setNom("Brasserie d'Orval");
         brasseur3.setPays(PaysEnum.BELGIQUE);
-        brasseurs.add(brasseur3);
+        brasseurRepo.save(brasseur3);
 
         Brasseur brasseur4 = new Brasseur();
         brasseur4.setNom("Brouwerij Bosteels");
         brasseur4.setPays(PaysEnum.BELGIQUE);
-        brasseurs.add(brasseur4);
+        brasseurRepo.save(brasseur4);
 
         /*Bieres*/
         Biere biere1 = new Biere();
@@ -46,7 +65,7 @@ public class ReferentielService {
         biere1.setStyle(StyleBiereEnum.IPA);
         biere1.setDateMaj(now);
         biere1.setBrasseur(brasseur1);
-        bieres.add(biere1);
+        biereRepo.save(biere1);
 
         Biere biere2 = new Biere();
         biere2.setNom("Molson Canadian Lager");
@@ -54,7 +73,7 @@ public class ReferentielService {
         biere2.setDegre(5.0);
         biere2.setDateMaj(now);
         biere2.setBrasseur(brasseur2);
-        bieres.add(biere2);
+        biereRepo.save(biere2);
 
         Biere biere3 = new Biere();
         biere3.setNom("Orval");
@@ -62,7 +81,7 @@ public class ReferentielService {
         biere3.setDegre(6.2);
         biere3.setDateMaj(now);
         biere3.setBrasseur(brasseur3);
-        bieres.add(biere3);
+        biereRepo.save(biere3);
 
         Biere biere4 = new Biere();
         biere4.setNom("Pauwel Kwak");
@@ -70,7 +89,7 @@ public class ReferentielService {
         biere4.setDegre(8.0);
         biere4.setDateMaj(now);
         biere4.setBrasseur(brasseur4);
-        bieres.add(biere4);
+        biereRepo.save(biere4);
 
 
         Biere biere5 = new Biere();
@@ -79,7 +98,7 @@ public class ReferentielService {
         biere5.setDegre(8.4);
         biere5.setDateMaj(now);
         biere5.setBrasseur(brasseur4);
-        bieres.add(biere5);
+        biereRepo.save(biere5);
 
         //Point de vente
         PointDeVente pdv1 = new PointDeVente();
@@ -88,7 +107,7 @@ public class ReferentielService {
         pdv1.addBiere(biere1);
         pdv1.addBiere(biere2);
         pdv1.addBiere(biere3);
-        pdvs.add(pdv1);
+        pdvRepo.save(pdv1);
 
 
         PointDeVente pdv2 = new PointDeVente();
@@ -97,43 +116,40 @@ public class ReferentielService {
         pdv2.addBiere(biere3);
         pdv2.addBiere(biere4);
         pdv2.addBiere(biere5);
-        pdvs.add(pdv2);
-
+        pdvRepo.save(pdv2);
     }
 
-    public List<Biere> getAllBiere(){
-        return bieres;
+    @Transactional(value = TxType.REQUIRES_NEW)
+    public Iterable<Biere> getAllBiere(){
+        return biereRepo.findAll();
     }
 
-    public List<PointDeVente> getAllPointDeVente(){
-        return pdvs;
+    public Iterable<PointDeVente> getAllPointDeVente(){
+        return pdvRepo.findAll();
     }
 
-    public List<Brasseur> getAllBrasseur(){
-        return brasseurs;
+    public Iterable<Brasseur> getAllBrasseur(){
+        return brasseurRepo.findAll();
     }
 
-    public Biere getBiere(int index){
-        return bieres.get(index);
+    public Optional<Biere> getBiere(long pkBiere){
+        return biereRepo.findById(pkBiere);
     }
 
-    public List<Biere> getBiereParPays(PaysEnum pays) {
-        return bieres.stream()
-                .filter(b -> b.getBrasseur().getPays().equals(pays))
-                .collect(Collectors.toList());
+    public Iterable<Biere> getBiereParPays(PaysEnum pays) {
+        return biereRepo.findByPays(pays);
     }
+    
 
-    public  List<PointDeVente> getPointDeVentes(Biere b){
-        return pdvs.stream()
-                .filter(pdv ->pdv.getBieres().contains(b))
-                .collect(Collectors.toList());
+    public  Iterable<PointDeVente> getPointDeVentes(Biere b){
+        return pdvRepo.findByBiere(b);
     }
 
     public void addBrasseur(Brasseur brasseur){
-        brasseurs.add(brasseur);
+        brasseurRepo.save(brasseur);
     }
 
-    public Brasseur deleteBrasseur(int index){
-       return  brasseurs.remove(index);
+    public void deleteBrasseur(long pkBrasseur){
+         brasseurRepo.deleteById(pkBrasseur);
     }
 }

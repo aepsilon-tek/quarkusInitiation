@@ -1,0 +1,127 @@
+
+#*********************
+# REQUETE de base
+#*********************
+query recupAllBeer{
+allBrasseur{
+  id,
+  nom
+}
+  
+  allBiere{
+  id,
+  nom,
+  brasseur{
+    nom
+  }
+}
+}
+
+#*********************
+#Aliases Query (rename the result of a field) 
+#*********************
+query AliasesTest{
+  
+  existBeer:biere(idBiere:3){
+    id,nom
+  }
+  
+   notExistBeer:biere(idBiere:12){
+    id,nom
+  }
+}
+
+#*********************
+  # TEST des Fragments
+  # "frequently used to split complicated application data 
+  # requirements into smaller chunks"
+  #*********************
+  query FragmentTestQuery{
+   testFragmentBeer:biere(idBiere:3){
+    ...detailBiere
+  } 
+}
+
+ fragment detailBiere on Biere {
+  id,
+  nom,
+  brasseur{
+    nom,
+    pays
+  }
+}
+
+#*********************
+# PASSAGE  de variable
+#*********************
+query rechercheBiereParPays($paysVar: PaysEnum) {
+  biereParPays(pays: $paysVar) {
+    id,
+    nom
+  }
+}
+# Données pour la section variable
+#{
+#  "paysVar":  "BELGIQUE"
+#}
+
+#*********************
+# PASSAGE  de variable Mandatory
+#*********************
+query rechercheBiereParPays2($paysVarNotExist: PaysEnum!) {
+  biereParPays(pays: $paysVarNotExist) {
+    id,
+    nom
+  }
+}
+
+
+#*********************
+# PASSAGE  de variable avec Valeur par defaut
+#*********************
+query rechercheBiereParPays3($paysVarNotExist: PaysEnum=CANADA) {
+  biereParPays(pays: $paysVarNotExist) {
+    id,
+    nom
+  }
+}
+
+#*********************
+# DIRECTIVE - INCLUDE
+#*********************
+query recupAllBeerWithDirectiveInclude($withBrasseur: Boolean=false){
+  allBiere{
+  id,
+  nom,
+  brasseur@include(if: $withBrasseur){
+    nom
+  }
+}
+}
+
+#*********************
+# DIRECTIVE - SKIP
+#*********************
+query recupAllBeerWithDirectiveSkip($withoutBrasseur: Boolean=true){
+  allBiere{
+  id,
+  nom,
+  brasseur@skip(if: $withoutBrasseur){
+    nom
+  }
+}
+}
+
+#*********************
+# MUTATION - BASIQUE avec en parametre un object complexe
+#*********************
+mutation CreateBrasseur($newBrasseur: BrasseurInput!) {
+  ajoutBrasseur(b:$newBrasseur) {
+    id,
+    nom
+  }
+}
+
+#{
+#  "newBrasseur": {"nom": "New Brasseur","pays": "FRANCE"}
+#}

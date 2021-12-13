@@ -1,13 +1,16 @@
 package org.aepsilon.culturetek.quarkus.resource;
 
-import org.aepsilon.culturetek.quarkus.model.Biere;
-import org.aepsilon.culturetek.quarkus.model.Brasseur;
-import org.aepsilon.culturetek.quarkus.service.ReferentielService;
-import org.eclipse.microprofile.graphql.*;
-import org.jboss.logging.Logger;
+import java.util.List;
 
 import javax.inject.Inject;
-import java.util.List;
+
+import org.aepsilon.culturetek.quarkus.model.Brasseur;
+import org.aepsilon.culturetek.quarkus.service.ReferentielService;
+import org.eclipse.microprofile.graphql.Description;
+import org.eclipse.microprofile.graphql.GraphQLApi;
+import org.eclipse.microprofile.graphql.Mutation;
+import org.eclipse.microprofile.graphql.Query;
+import org.jboss.logging.Logger;
 
 @GraphQLApi
 public class BrasseurResource {
@@ -32,8 +35,8 @@ public class BrasseurResource {
     }
 
     @Mutation
-    public Brasseur deleteBrasseur(int id) {
-        return service.deleteBrasseur(id);
+    public boolean deleteBrasseur(int id) {
+         return service.deleteBrasseur(id);
     }
 
 }
