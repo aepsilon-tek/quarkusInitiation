@@ -32,6 +32,7 @@ Pour plus d'info sur le build d'executable natif :  https://quarkus.io/guides/bu
 # Roadmap
 * V2.0 Ajout graphQl (dans quarkus & springboot)
 * V3.0 Ajout d'un accès bd (panache pour quarkus / springData pour springBoot)
+* V3.1 Ajout d'un projet FRONT en LitElement qui consomme l'api GraphQL (sur les 2 projets back)
 * V4.0 GraphQl avec interrogation BD optimisé (selon requête du front)
 * V5.0 Sécuration des Query GraphQL ( cf https://quarkus.io/guides/security-authorization)
 
@@ -51,12 +52,23 @@ Pour plus d'info sur le build d'executable natif :  https://quarkus.io/guides/bu
        * https://piotrminkowski.com/2021/04/14/advanced-graphql-with-quarkus/
    * Ajout de D'une persistence H2 avec Panache
 * Projet Spring :  
+  * Upgrade de SpringBoot, passage en 2.6.1
+  * Alimentation BD soit par
+       * Fichier nommé 'data.sql'
+          * https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto.data-initialization.using-basic-sql-scripts
+       * CommandLineRunner (dans application)
+  * Remplacement implémentation de Graphql (passage de code first à schema first)
+       * https://www.baeldung.com/spring-graphql
+       * https://medium.com/@saurabh1226/getting-started-with-graphql-spqr-with-springboot-bb9d232053ec
+       
 
 # Version Spring Boot
+* mvn clean spring-boot:run -pl springboot
 * Url de la gui graphQL : http://localhost:8080/gui
-* 
+* URL du schema: http://localhost:8080/graphql (uniquement par POST avec des parametre)
 
 
 # Version Quarkus
+* mvn clean quarkus:dev -pl quarkus
 * URL du schema GraphQl : http://localhost:8080/graphql/schema.graphql
 * URL de UI GraphQl : http://localhost:8080/q/graphql-ui/

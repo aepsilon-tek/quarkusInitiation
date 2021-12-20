@@ -3,16 +3,20 @@ package org.aepsilon.culturetek.springboot.model;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Biere {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue (strategy = GenerationType.SEQUENCE, generator = "generator_biere")
+    @SequenceGenerator(name = "generator_biere", sequenceName = "BIERE_SEQ", allocationSize = 1)
     private Long id;
 
     
@@ -22,6 +26,8 @@ public class Biere {
     
     @ManyToOne(fetch = FetchType.LAZY)
     private Brasseur brasseur;
+
+    @Enumerated(EnumType.STRING)
     private StyleBiereEnum style;
 
     private LocalDate dateMaj;

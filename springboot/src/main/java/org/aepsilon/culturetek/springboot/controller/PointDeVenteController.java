@@ -29,7 +29,7 @@ public class PointDeVenteController {
     }
 
 
-    @GraphQLQuery
+    @GraphQLQuery(name = "searchPdv")
     //@Description("Renvoie les points de ventes d'une bière")
     public Iterable<PointDeVente> searchPdv(@GraphQLContext Biere b) {
         LOG.info("searchPdv({0})",b);

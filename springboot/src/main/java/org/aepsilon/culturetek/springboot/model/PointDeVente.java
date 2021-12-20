@@ -9,12 +9,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity
 public class PointDeVente {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue (strategy = GenerationType.SEQUENCE, generator = "generator_pdv")
+    @SequenceGenerator(name = "generator_pdv", sequenceName = "PDV_SEQ", allocationSize = 1)
     private Long id;
     
 

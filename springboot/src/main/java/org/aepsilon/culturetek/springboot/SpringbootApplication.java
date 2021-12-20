@@ -19,10 +19,13 @@ public class SpringbootApplication {
 		SpringApplication.run(SpringbootApplication.class, args);
 	}
 
+	/* 
+	* Seconde possibilité pour importer des datas
 	@Bean
 	public CommandLineRunner demo(ReferentielService service) {
 	  return (args) -> {
 		  service.initData();
 	  };
 	}
+	*/
 }

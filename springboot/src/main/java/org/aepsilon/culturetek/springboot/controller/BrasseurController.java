@@ -34,7 +34,7 @@ public class BrasseurController {
         return b;
     }
 
-    @GraphQLMutation
+    @GraphQLMutation(name = "deleteBrasseur")
     public void deleteBrasseur(long pkBrasseur) {
          service.deleteBrasseur(pkBrasseur);
     }

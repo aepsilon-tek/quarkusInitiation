@@ -1,18 +1,25 @@
 package org.aepsilon.culturetek.springboot.model;
 
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+
+import org.aepsilon.culturetek.springboot.model.converter.PaysEnumConverter;
 
 @Entity
 public class Brasseur {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue (strategy = GenerationType.SEQUENCE, generator = "generator_brasseur")
+    @SequenceGenerator(name = "generator_brasseur", sequenceName = "BRASSEUR_SEQ", allocationSize = 1)
     private Long id;
 
     private String nom;
+
+    @Convert(converter = PaysEnumConverter.class)
     private PaysEnum pays;
 
 
