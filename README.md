@@ -57,8 +57,7 @@ Pour plus d'info sur le build d'executable natif :  https://quarkus.io/guides/bu
        * Fichier nommé 'data.sql'
           * https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto.data-initialization.using-basic-sql-scripts
        * CommandLineRunner (dans application)
-  * Remplacement implémentation de Graphql (passage de code first à schema first)
-       * https://www.baeldung.com/spring-graphql
+  * Validation des requetes graphQL qui tournent sur quarkus et sur springboot
        * https://medium.com/@saurabh1226/getting-started-with-graphql-spqr-with-springboot-bb9d232053ec
        
 
