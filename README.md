@@ -60,6 +60,31 @@ Pour plus d'info sur le build d'executable natif :  https://quarkus.io/guides/bu
   * Validation des requetes graphQL qui tournent sur quarkus et sur springboot
        * https://medium.com/@saurabh1226/getting-started-with-graphql-spqr-with-springboot-bb9d232053ec
        
+## V3.0
+* Ajout d'un module front pour tester l'api GraphQl
+    * https://www.thisdot.co/blog/getting-started-with-litelement-and-tailwind
+    * depuis le starter de rollup
+       * npm install -D @babel/core @rollup/plugin-babel @babel/preset-env typescript @rollup/plugin-typescript @babel/preset-typescript
+    * Génération de tscCOnfig : npx tsc --init
+    * npm i -D eslint prettier eslint-config-prettier eslint-plugin-prettier
+
+    * COnf ROllUp - https://buzut.net/configurer-rollup-bundles-esm-cjs/
+
+    * Starter : https://lit.dev/docs/tools/starter-kits/ (typescript project :  https://github.com/lit/lit-element-starter-ts)
+        * utilisation de RollUp (dans le setup) comme build tools (et pas webpack)
+    * lancement du build (npm run build ou npm run build:watch)
+    * lancement du serveur local (une fois le build fait) : npm run serve (http://localhost:8000/)
+    * https://vaadin.com/directory/component/polymerlit-element
+    * Structuration component - https://lit.dev/docs/components/rendering/
+    * Tailwind - https://www.thisdot.co/blog/getting-started-with-litelement-and-tailwind
+            * https://tailwindcss.com/docs/installation/using-postcss
+            * 1-  Intallation des dependances npm install -D rollup-plugin-postcss tailwindcss postcss autoprefixer
+            * 2- Creation du fichier de conf tailwind (tailwind.config.js) : npx tailwindcss init
+            * 3- Ajout du plugin postcss à la config de rollUp
+            * 4- Creation d'un fichier de conf pour le puligin postcss -> postcss.config.js
+            * 5- Config du plugins tailwind `tailwind.config.js`
+            * 6- 
+
 
 # Version Spring Boot
 * mvn clean spring-boot:run -pl springboot

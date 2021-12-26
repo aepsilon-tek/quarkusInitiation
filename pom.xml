@@ -13,5 +13,6 @@
   <modules>
     <module>quarkus</module>
     <module>springboot</module>
+    <module>front</module>
   </modules>
 </project>
