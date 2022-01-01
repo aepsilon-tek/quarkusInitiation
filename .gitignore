@@ -37,5 +37,5 @@ release.properties
 
 #Front
 node_modules/
-front/public/*.js
-front/public/*.map
+front-lit/public/*.js
+front-lit/public/*.map

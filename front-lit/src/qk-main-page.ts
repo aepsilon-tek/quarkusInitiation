@@ -6,7 +6,7 @@
  import {LitElement, html, css} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
 
-//import './main.css'
+import './main.css'
 import './qk-header';
 import './qk-main-area';
 import './qk-footer';
@@ -20,6 +20,7 @@ export class QkMainPage extends LitElement {
 
   override render() {
     return html`
+    <h1 class="mx-auto my-4 py-4 text-center shadow-lg text-xl w-1/2">Hello, World!</h1>
       <qk-header></qk-header>
       <qk-main-area></qk-main-area>
       <qk-footer></qk-footer>

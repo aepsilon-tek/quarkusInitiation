@@ -7,6 +7,8 @@
  import {LitElement, html, css} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
 
+import './main.css'
+
 /**
  * An example element.
  *
@@ -14,16 +16,8 @@ import {customElement, property} from 'lit/decorators.js';
  * @slot - This element has a slot
  * @csspart button - The button
  */
-@customElement('qk-graplql-selector')
+@customElement('qk-graphql-selector')
 export class QkGraphqlSelector extends LitElement {
-  static override styles = css`
-    :host {
-      display: block;
-      border: solid 1px gray;
-      padding: 16px;
-      max-width: 800px;
-    }
-  `;
 
   /**
    * The name to say "Hello" to.
@@ -39,6 +33,7 @@ export class QkGraphqlSelector extends LitElement {
 
   override render() {
     return html`
+    YOP
       <div class="grid grid-cols-2 gap-3">
         <div class="shadow-sm bg-white rounded-lg">
           shadow-sm
@@ -64,6 +59,6 @@ export class QkGraphqlSelector extends LitElement {
 //Providing good TypeScript typings
 declare global {
   interface HTMLElementTagNameMap {
-    'qk-graplql-selector': QkGraphqlSelector;
+    'qk-graphql-selector': QkGraphqlSelector;
   }
 }

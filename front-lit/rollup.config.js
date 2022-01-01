@@ -3,6 +3,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import { terser } from 'rollup-plugin-terser';
 import typescript from '@rollup/plugin-typescript';
 import { babel } from '@rollup/plugin-babel'
+import postcss from 'rollup-plugin-postcss' // import postcss plugin  
 
 // `npm run build` -> `production` is true
 // `npm run dev` -> `production` is false
@@ -23,6 +24,7 @@ const iife = {
     }),
     resolve(), // prise en charge des modules depuis node_modules
     commonjs(),// prise en charge de require
+    postcss(), // use postcss plugin
     babel({
       babelHelpers: 'bundled',
       exclude: "node_modules/**"
@@ -44,6 +46,7 @@ const esm = {
     }),
     resolve(), // prise en charge des modules depuis node_modules
     commonjs(),// prise en charge de require
+    postcss(), // use postcss plugin
     babel({
       babelHelpers: 'bundled',
       exclude: "node_modules/**"

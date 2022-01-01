@@ -13,6 +13,7 @@
   <modules>
     <module>quarkus</module>
     <module>springboot</module>
-    <module>front</module>
+    <module>front-lit</module>
+    <module>front-svelte</module>
   </modules>
 </project>

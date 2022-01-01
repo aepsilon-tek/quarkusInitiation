@@ -69,6 +69,7 @@ Pour plus d'info sur le build d'executable natif :  https://quarkus.io/guides/bu
     * npm i -D eslint prettier eslint-config-prettier eslint-plugin-prettier
 
     * COnf ROllUp - https://buzut.net/configurer-rollup-bundles-esm-cjs/
+    * Installation tailwind - npm i -D rollup-plugin-postcss tailwindcss postcss autoprefixer
 
     * Starter : https://lit.dev/docs/tools/starter-kits/ (typescript project :  https://github.com/lit/lit-element-starter-ts)
         * utilisation de RollUp (dans le setup) comme build tools (et pas webpack)
